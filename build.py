@@ -26,7 +26,7 @@ if os.path.exists("packages"):
 os.mkdir("packages")
 
 for item in group_list:
-    os.mkdir("packages/@" + item)
+    os.mkdir("packages/" + item)
 
 ##  main package iteration
 
@@ -43,7 +43,7 @@ for item in group_list:
 
     item_html = read_html("https://archlinux.org/groups/x86_64/" + item)
     path = "package-lists/" + item
-    item_list = re.findall(r"\/packages\/.*?\/x86_64\/(.*?)\/", item_html)
+    item_list = re.findall(r"\/packages\/.*?\/.*?\/(.*?)\/", item_html)
 
     ## create PKGBUILD
 
@@ -71,6 +71,6 @@ depends=(
 
     ##  write PKGBUILD
 
-    file = open("packages/@" + item + "/PKGBUILD", "w")
+    file = open("packages/" + item + "/PKGBUILD", "w")
     file.write(pkgbuild)
     file.close()

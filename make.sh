@@ -1,8 +1,6 @@
 #!/bin/sh
 
-for item in packages/*/
-do
-    cd $item
-    makepkg -cCr
-    cd ../../
-done
+currdir=$(pwd)
+echo $currdir
+cd ~/public/meta-packages/packages/$1 && makepkg -cCfirs
+cd $currdir
